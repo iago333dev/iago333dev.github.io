@@ -7,6 +7,15 @@
   padding-right: 10px;
 }
 
+:root {
+  --primaryColor: #f09d51;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --mainSpacing: 0.1rem;
+  --mainTransition: all 0.8s linear;
+  
+}
 
 
 *, *:before, *:after {
@@ -25,13 +34,57 @@ a {
   text-decoration: none;
 }
 
-#browser {
+.iago-overlay{
   margin: 10px auto;
   color: white;
   width: 80%;
   -webkit-box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.5);
   box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.5);
+
+  transform: translateX(150%); 
+  transition: var(--mainTransition);
+  position: relative;
+
+  
+}
+
+.conhecimentos-overlay{
+  margin: 10px auto;
+  color: white;
+  width: 80%;
+  -webkit-box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.5);
+
+  transform: translateX(150%); 
+  transition: var(--mainTransition);
+  position: relative;
+
+  
+}
+
+.nav{
+  overflow: auto;
+}
+
+.ShowBrowser{
+  transform: translateX(0);
+  transition: 0;
+  
+  visibility: visible;  
+}
+
+.ShowBrowserFinish{
+  transform: translateX(-150%);
+  transition: 0;
+}
+
+
+#conhec{
+  margin-top: -500;
+  visibility: hidden;  
+
 }
 
 #browser-bar {
@@ -43,9 +96,7 @@ a {
   font-size: 0.9em;
   position: relative;
 }
-#browser-bar p {
-  text-align: center;
-}
+
 #browser-bar .circles {
   border-radius: 10px;
   height: 13px;
@@ -72,6 +123,8 @@ a {
 
 #content {
   background: #454f4f;
+  
+  
 }
 #content:after {
   content: "";
@@ -121,7 +174,10 @@ p{
   }
 }
 #content #left #map {
-  height: 350px;
+  background-color: black;
+  height: 400px;
+  width: 133%;
+  padding-left: 5px;
   position: relative;
  /* background-image: url("http://f.cl.ly/items/452R3S1440221Z3m372j/israel.png"); */
 

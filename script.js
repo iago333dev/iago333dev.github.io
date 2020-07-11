@@ -1,5 +1,5 @@
-//Inspired by a dribbble by Bluroon
-//https://dribbble.com/shots/1356864-Contact-Us
+
+
 
 //Capture the click event on a location
 $("#location-bar a").click(function(event){

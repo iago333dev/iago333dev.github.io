@@ -13,7 +13,7 @@
 
   <link rel="stylesheet" href="./underbar.css">
   <link rel="stylesheet" href="./particles.css">
-    <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css">
 
 
 
@@ -24,16 +24,17 @@
 <!-- particles.js container --> 
 <div id="particles-js"></div>
 
-
+<div clas="nav">
 <nav>
   <div class="underline"></div>
   <div class="underline"></div>
   <div class="underline"></div>
   <a onClick="ul(0)">Iago</a><a onClick="ul(1)">Conhecimentos</a><a onClick="ul(2)">Experiências</a><a onClick="ul(3)">Alguns Projetos</a><a onClick="ul(4)">Contato</a>
 </nav>
+</div>
 
 
-<div id='browser'>
+<div id='browser' class="iago-overlay">
   <div id='browser-bar'>
     <div class='circles'></div>
     <div class='circles'></div>
@@ -46,24 +47,35 @@
       <div id='map'>
         <h1></h1>
         <div class="interno">
-          iago@iago-PC: $ sudo quem-sou<br>
-          Bash: quem-sou: Iago! Cidadão que ama o novo e trás: futuro hoje!<br>
-          iago@alves-PC: $ sudo quem-sou @
+          iago@iago-PC: # qmsou -h<br>
+          Bash: quem-sou: Desenvolvedor, amador!? talvez. porem amante
+          sempre, da técnologia e dos bons frutos que essa traz.<br>
+          iago@alves-PC: # qmsou -quantotempo<br>
+          Bash: 3 Anos de Code! <br>
+          iago@alves-PC: # qmsou oquemais<br>
+          Bash: Rock'n Roll aos finas de semana, tambem arranho na guitarra \m/  <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='conhec' class="iago-overlay">
+  <div id='browser-bar'>
+    <div class='circles'></div>
+    <div class='circles'></div>
+    <div class='circles'></div>
+    <p></p>
+    <span class='arrow entypo-resize-full'></span>
+  </div>
+  <div id='content'>
+    <div id='left'>
+      <div id='map'>
+        <h1></h1>
+        <div class="interno">
 
         </div>
-
-
       </div>
-
-    </div>
-    <div id='right'>
-      <p>Contatos</p>
-      <img class="photo" src="photo.png" alt="">
-
-      <p class='other entypo-mail'>
-        <a href='#'>iagoalves@ifba.edu.br</a>
-      </p>
-      <p class='other entypo-phone'>(+55) 71 981367152 </p>
     </div>
   </div>
 </div>
@@ -73,8 +85,8 @@
 <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <!-- partial -->
-  <script  src="./particles.js"></script>
-  <script  src="./underbar.js"></script>
+<script  src="./particles.js"></script>
+<script  src="./underbar.js"></script>
 
 
 
