@@ -4,17 +4,26 @@
   <meta charset="UTF-8">
   <title>iago333dev</title>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,600" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/jquery.selectric/1.10.1/selectric.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="./style.css">
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@1&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@1&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@1&family=Raleway:wght@100&display=swap" rel="stylesheet">
   
-
-
   <link rel="stylesheet" href="./underbar.css">
+  <link rel="stylesheet" href="./charts.css">
+
+
   <link rel="stylesheet" href="./particles.css">
+
   <link rel="stylesheet" href="./style.css">
 
+
+  
 
 
 
@@ -47,33 +56,44 @@
       <div id='map'>
         <h1></h1>
         <div class="interno">
-          iago@iago-PC: # qmsou -h<br>
-          Bash: quem-sou: Desenvolvedor, amador!? talvez. porem amante
-          sempre, da técnologia e dos bons frutos que essa traz.<br>
-          iago@alves-PC: # qmsou -quantotempo<br>
-          Bash: 3 Anos de Code! <br>
-          iago@alves-PC: # qmsou oquemais<br>
-          Bash: Rock'n Roll aos finas de semana, tambem arranho na guitarra \m/  <br>
-        </div>
+          @iago333dev: # qmsou -h<br>
+          Bash: quem_sou: Desenvolvedor... as vezes amador, porem amante sempre da tecnologia...<br>
+          @iago333dev: # qmsou -lang: bahianes largue_o_doce<br>
+          Bash: quem_sou: O combustivel do meu presente é o futuro, o novo, poder criar hoje o amanhã é oque motiva a cada dia.<br>
+          @iago333dev: # qmsou -job<br>
+          Bash: No trabalho meu foco é produtividade geralmente estipulo objetivos pessoais para isso.<br></div>
       </div>
     </div>
   </div>
 </div>
 
-<div id='conhec' class="iago-overlay">
-  <div id='browser-bar'>
-    <div class='circles'></div>
-    <div class='circles'></div>
-    <div class='circles'></div>
-    <p></p>
-    <span class='arrow entypo-resize-full'></span>
-  </div>
-  <div id='content'>
-    <div id='left'>
-      <div id='map'>
-        <h1></h1>
-        <div class="interno">
-
+  <div id='conhec' class="iago-overlay">
+    <div id='browser-bar'>
+      <div class='circles'></div>
+      <div class='circles'></div>
+      <div class='circles'></div>
+      <p></p>
+      <span class='arrow entypo-resize-full'></span>
+    </div>
+    <div id='content-c'>
+      <div id='left'>
+        <div id='map'>
+          <div class="row">
+            <div class="col-6 col-md-6">
+              <div class="chart doughnut-chart dark">
+                <h3 class="title">Como Desenvolvedor</h3>
+                <p class="tagline">Grafico: Em Relação a Tempo como DEV</p>
+                <canvas height="500" id="doughnutChartDark"></canvas>
+              </div>              
+            </div>
+            <div class="col-6 col-md-6">
+              <div class="chart bar-chart light">
+                <h3 class="title">Tecnologias</h3>
+                <p class="tagline">Grafico: Por Tecnologia</p>
+                <canvas height="500" id="barChartHDark"></canvas>
+              </div>              
+            </div>  
+          </div>        
         </div>
       </div>
     </div>
@@ -84,9 +104,16 @@
 
 <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/jquery.selectric/1.10.1/jquery.selectric.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js'></script><script  src="./script.js"></script>
+
 <!-- partial -->
 <script  src="./particles.js"></script>
 <script  src="./underbar.js"></script>
+<script  src="./charts.js"></script>
 
 
 

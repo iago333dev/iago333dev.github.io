@@ -70,8 +70,7 @@ a {
 
 .ShowBrowser{
   transform: translateX(0);
-  transition: 0;
-  
+  transition: 0;  
   visibility: visible;  
 }
 
@@ -82,10 +81,16 @@ a {
 
 
 #conhec{
-  margin-top: -500;
-  visibility: hidden;  
-
+  position: absolute;
+  top: 20%;
+  left: 9%;
 }
+
+.VisibilityOff{
+  visibility: hidden;  
+}
+
+
 
 #browser-bar {
   background: #394141;
@@ -122,10 +127,10 @@ a {
 }
 
 #content {
-  background: #454f4f;
-  
-  
+  background: #454f4f;   
 }
+
+
 #content:after {
   content: "";
   display: table;
@@ -176,13 +181,23 @@ p{
 #content #left #map {
   background-color: black;
   height: 400px;
-  width: 133%;
+  width: 100%;
   padding-left: 5px;
-  position: relative;
- /* background-image: url("http://f.cl.ly/items/452R3S1440221Z3m372j/israel.png"); */
-
+  position: absolute;
   background-size: cover;
 }
+
+#content-c #left #map {
+  background-color: #5f6464;
+  height: 400px;
+  width: 100%;
+  padding-left: 5px;
+  position: absolute;
+  background-size: cover;
+}
+
+
+
 #content #left #map p {
   text-transform: uppercase;
   padding-top: 20px;
