@@ -20,7 +20,7 @@ var Selectize = /** @class */ (function () {
 var Charts = /** @class */ (function () {
     function Charts() {
         this.colors = ["#ff3434", "#ffdd33", "#67b678", "#E08886","#3333ff", "#00e6e6"];
-        this.tickColor = "#0c0c0d";
+        this.tickColor = "#D5D6CB";
         this.initRadar();
         this.initBarHorizontal();
         this.initDoughnut();
@@ -72,7 +72,8 @@ var Charts = /** @class */ (function () {
                     labels: {
                         boxWidth: 11,
                         fontColor: this.tickColor,
-                        fontSize: 11
+                        fontSize: 13,
+                        
                     }
                 }
             }

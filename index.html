@@ -22,7 +22,11 @@
 
   <link rel="stylesheet" href="./style.css">
 
+<!--===========================================================================   
 
+                                  NAVBAR
+@Iago3__dev
+===========================================================================-->
   
 
 
@@ -34,13 +38,61 @@
 <div id="particles-js"></div>
 
 <div clas="nav">
-<nav>
-  <div class="underline"></div>
-  <div class="underline"></div>
-  <div class="underline"></div>
-  <a onClick="ul(0)">Iago</a><a onClick="ul(1)">Conhecimentos</a><a onClick="ul(2)">Experiências</a><a onClick="ul(3)">Alguns Projetos</a><a onClick="ul(4)">Contato</a>
-</nav>
+  <nav>
+    <div class="underline"></div>
+    <div class="underline"></div>
+    <div class="underline"></div>
+    <a onClick="ul(0)">Bash</a><a onClick="ul(1)">Habilidades</a><a onClick="ul(2)">Formação Acadêmica</a><a onClick="ul(3)">Experiências Profissionais</a><a onClick="ul(4)">Contato</a>
+  </nav>
 </div>
+
+
+
+<!--===========================================================================   
+
+                                  END NAVBAR
+@Iago3__dev
+===========================================================================-->
+
+<!--===========================================================================   
+
+                                  EXPERIENCIAS PROFISSIONAIS
+@Iago3__dev
+===========================================================================-->
+
+<div id='exp' class="iago-overlay">
+  <div id='browser-bar'>
+    <div class='circles'></div>
+    <div class='circles'></div>
+    <div class='circles'></div>
+    <p></p>
+    <span class='arrow entypo-resize-full'></span>
+  </div>
+  <div>
+    <div id='content-c'>
+      <div id='left'>
+        <div id='map'>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--===========================================================================   
+
+                                END CONHEC -> CHARTS
+@Iago3__dev
+===========================================================================-->
+
+
+  
+
+<!--===========================================================================   
+
+                                  CONTAINER BROWSER -> TERMINAL LINUX
+@Iago3__dev
+===========================================================================-->
+  
 
 
 <div id='browser' class="iago-overlay">
@@ -55,17 +107,28 @@
     <div id='left'>
       <div id='map'>
         <h1></h1>
-        <div class="interno">
+        <div class="row interno">
+          <p>
           @iago333dev: # qmsou -h<br>
-          Bash: quem_sou: Desenvolvedor... as vezes amador, porem amante sempre da tecnologia...<br>
-          @iago333dev: # qmsou -lang: bahianes largue_o_doce<br>
+          Bash: quem_sou: Dev full-stack sempre amador por sempre estar aprendendo e por sempre ser amante da tecnologia.<br>
+          @iago333dev: # qmsou -lang: "bahianes" largue_o_doce<br>
           Bash: quem_sou: O combustivel do meu presente é o futuro, o novo: poder criar hoje o amanhã é oque me motiva.<br>
           @iago333dev: # qmsou -job<br>
-          Bash: Meu foco é produtividade, Estipulo metas pessoais para me manter sempre estimulado e produtivo.<br></div>
+          Bash: Trabalho: foco e produtividade!, Estipulo metas e recompensas para me manter sempre animado!</br>
+           <small class="extra">Admito que metas e recompensas corporativas me animam mais.</small></br>
+          @iago333dev:<span id="cursor">|</span>
+          
+          </p>  <br></div>
       </div>
     </div>
   </div>
 </div>
+
+<!--===========================================================================   
+
+                                  CONHEC -> CHARTS
+@Iago3__dev
+===========================================================================-->
 
   <div id='conhec' class="iago-overlay">
     <div id='browser-bar'>
@@ -80,16 +143,14 @@
         <div id='map'>
           <div class="row">
             <div class="col-6 col-md-6">
-              <div class="chart doughnut-chart dark">
-                <h3 class="title">Como Desenvolvedor</h3>
-                <p class="tagline">Grafico: Em Relação a Tempo como DEV</p>
+              <h3 class="title">Relação: Tempo Desenvolvendo em Cada Tecnologias </h3>
+              <div class="chart doughnut-chart dark">                
                 <canvas height="500" id="doughnutChartDark"></canvas>
               </div>              
             </div>
             <div class="col-6 col-md-6">
-              <div class="chart bar-chart light">
-                <h3 class="title">Tecnologias</h3>
-                <p class="tagline">Grafico: Por Tecnologia</p>
+              <h3 class="title">Relação: Tempo Dedicado ao Estudo de Cada Tecnologias</h3>
+              <div class="chart bar-chart light">                
                 <canvas height="500" id="barChartHDark"></canvas>
               </div>              
             </div>  
@@ -99,6 +160,11 @@
     </div>
   </div>
 </div>
+<!--===========================================================================   
+
+                                  END CONHEC -> CHARTS
+@Iago3__dev
+===========================================================================-->
 
 
 
@@ -114,6 +180,8 @@
 <script  src="./particles.js"></script>
 <script  src="./underbar.js"></script>
 <script  src="./charts.js"></script>
+<script  src="./cursor.js"></script>
+
 
 
 

@@ -1,5 +1,7 @@
 const contentDOM = document.querySelector('#browser');
 const conhecDOM = document.querySelector('#conhec');
+const expDOM = document.querySelector('#exp');
+
 
 
 
@@ -16,12 +18,22 @@ function ul(index) {
 		conhecDOM.classList.remove("ShowBrowserFinish");
 	}
 
+	if(index === 2){	
+		expDOM.classList.add("ShowBrowser");
+		expDOM.classList.remove("ShowBrowserFinish");
+	}
+
 	if(index !== 0){
 		contentDOM.classList.add("ShowBrowserFinish");
+		
 	}
 
 	if(index !== 1){
 		conhecDOM.classList.add("ShowBrowserFinish");
+	}
+
+	if(index !== 2){
+		expDOM.classList.add("ShowBrowserFinish");
 	}
 
 
