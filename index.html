@@ -1,189 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>iago333dev</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comfy House</title>
+    <!-- font awesome -->
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,600" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/jquery.selectric/1.10.1/selectric.css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="./style.css">
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@1&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@1&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@1&family=Raleway:wght@100&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="./underbar.css">
-  <link rel="stylesheet" href="./charts.css">
-
-
-  <link rel="stylesheet" href="./particles.css">
-
-  <link rel="stylesheet" href="./style.css">
-
-<!--===========================================================================   
-
-                                  NAVBAR
-@Iago3__dev
-===========================================================================-->
-  
-
-
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="link rel=" stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-<!-- partial:index.partial.html -->
-<!-- particles.js container --> 
-<div id="particles-js"></div>
-
-<div clas="nav">
-  <nav>
-    <div class="underline"></div>
-    <div class="underline"></div>
-    <div class="underline"></div>
-    <a onClick="ul(0)">Bash</a><a onClick="ul(1)">Habilidades</a><a onClick="ul(2)">Formação Acadêmica</a><a onClick="ul(3)">Experiências Profissionais</a><a onClick="ul(4)">Contato</a>
-  </nav>
-</div>
-
-
-
-<!--===========================================================================   
-
-                                  END NAVBAR
-@Iago3__dev
-===========================================================================-->
-
-<!--===========================================================================   
-
-                                  EXPERIENCIAS PROFISSIONAIS
-@Iago3__dev
-===========================================================================-->
-
-<div id='exp' class="iago-overlay">
-  <div id='browser-bar'>
-    <div class='circles'></div>
-    <div class='circles'></div>
-    <div class='circles'></div>
-    <p></p>
-    <span class='arrow entypo-resize-full'></span>
-  </div>
-  <div>
-    <div id='content-c'>
-      <div id='left'>
-        <div id='map'>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--===========================================================================   
-
-                                END CONHEC -> CHARTS
-@Iago3__dev
-===========================================================================-->
-
-
-  
-
-<!--===========================================================================   
-
-                                  CONTAINER BROWSER -> TERMINAL LINUX
-@Iago3__dev
-===========================================================================-->
-  
-
-
-<div id='browser' class="iago-overlay">
-  <div id='browser-bar'>
-    <div class='circles'></div>
-    <div class='circles'></div>
-    <div class='circles'></div>
-    <p></p>
-    <span class='arrow entypo-resize-full'></span>
-  </div>
-  <div id='content'>
-    <div id='left'>
-      <div id='map'>
-        <h1></h1>
-        <div class="row interno">
-          <p>
-          @iago333dev: # qmsou -h<br>
-          Bash: quem_sou: Dev full-stack sempre amador por sempre estar aprendendo e por sempre ser amante da tecnologia.<br>
-          @iago333dev: # qmsou -lang: "bahianes" largue_o_doce<br>
-          Bash: quem_sou: O combustivel do meu presente é o futuro, o novo: poder criar hoje o amanhã é oque me motiva.<br>
-          @iago333dev: # qmsou -job<br>
-          Bash: Trabalho: foco e produtividade!, Estipulo metas e recompensas para me manter sempre animado!</br>
-           <small class="extra">Admito que metas e recompensas corporativas me animam mais.</small></br>
-          @iago333dev:<span id="cursor">|</span>
-          
-          </p>  <br></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--===========================================================================   
-
-                                  CONHEC -> CHARTS
-@Iago3__dev
-===========================================================================-->
-
-  <div id='conhec' class="iago-overlay">
-    <div id='browser-bar'>
-      <div class='circles'></div>
-      <div class='circles'></div>
-      <div class='circles'></div>
-      <p></p>
-      <span class='arrow entypo-resize-full'></span>
-    </div>
-    <div id='content-c'>
-      <div id='left'>
-        <div id='map'>
-          <div class="row">
-            <div class="col-6 col-md-6">
-              <h3 class="title">Relação: Tempo Desenvolvendo em Cada Tecnologias </h3>
-              <div class="chart doughnut-chart dark">                
-                <canvas height="500" id="doughnutChartDark"></canvas>
-              </div>              
+    <!-- ================== NAV BAR ================== -->
+    <nav class="navbar">
+        <div class="navbar-center">
+            <span class="nav-icon">
+                <i class="fa fa-bars"></i>
+            </span>
+            <img src="./public/logo_.png" alt="store logo">
+            <div class="cart-btn">
+                <span class="nav-icon">
+                    <i class="fa fa-cart-plus"></i>
+                </span>
+                <div class="cart-items">1</div>
             </div>
-            <div class="col-6 col-md-6">
-              <h3 class="title">Relação: Tempo Dedicado ao Estudo de Cada Tecnologias</h3>
-              <div class="chart bar-chart light">                
-                <canvas height="500" id="barChartHDark"></canvas>
-              </div>              
-            </div>  
-          </div>        
         </div>
-      </div>
+    </nav>
+    <!-- ================== NAV BAR ================== -->
+
+
+
+    <header class="hero">
+        <div class="banner">
+            <p class="banner-title">Super Atacadão</p>
+            <p class="banner-sub-title">Toda Quarta e Quinta com Frutas e Legumes em 50% de Desconto</p>
+            <button class="banner-btn" onclick="ScrollToBottom()">Comprar</button>
+        </div>
+    </header>
+
+    <img id="imagem_whats" src="https://www.ellodigital.com.br/images/whatsapp.png" id="imagem_whats2"
+        src="https://www.ellodigital.com.br/images/whatsapp.png"
+        onClick="window.open('https://api.whatsapp.com/send?phone=+556200000000&amp;text=Olá!', '_blank');">
+
+
+    <!-- PRDUCTS-->
+    <section class="products">
+        <div class="section-title">
+            <h2>Compre no Conforto de sua Casa</h2>
+        </div>
+        <div class="products-center">
+
+        </div>
+    </section>
+
+    <div class="cart-overlay">
+        <div class="cart">
+            <span class="close-cart">
+                <i class="fa fa-window-close"></i>
+            </span>
+            <h2>Carrinho</h2>
+            <div class="cart-content">
+                <!-- cart item-->
+                <!-- <div class="cart-item">
+
+            </div>
+            -->
+                <!-- end of cart item-->
+            </div>
+            <div class="cart-footer">
+                <h3>Total : $ <span class="cart-total">0</span></h3>
+                <button class="clear-cart banner-btn">Limpar</button>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<!--===========================================================================   
+    <!--END OF PRDUCTS-->
 
-                                  END CONHEC -> CHARTS
-@Iago3__dev
-===========================================================================-->
-
-
-
-<!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
-<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
-<script src='https://cdn.jsdelivr.net/jquery.selectric/1.10.1/jquery.selectric.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js'></script><script  src="./script.js"></script>
-
-<!-- partial -->
-<script  src="./particles.js"></script>
-<script  src="./underbar.js"></script>
-<script  src="./charts.js"></script>
-<script  src="./cursor.js"></script>
-
-
-
-
+    <script src="app.js"></script>
 </body>
+
 </html>
