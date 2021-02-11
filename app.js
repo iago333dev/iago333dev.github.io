@@ -9,6 +9,7 @@ const cartTotal = document.querySelector('.cart-total');
 const cartItems = document.querySelector('.cart-items');
 const cartContent = document.querySelector('.cart-content');
 const productsDOM = document.querySelector('.products-center');
+const finishBtn = document.querySelector('.finish');
 
 const btns = document.querySelectorAll(".bag-btn");
 
@@ -66,7 +67,7 @@ class UI {
                     </button>
                 </div>
                 <h3>${product.title}</h3>
-                <h3>$${product.price}</h3>
+                <h3>R$ ${product.price}</h3>
             </article>    
             <!-- END OF SINGLE PRODUCT--> 
             `
@@ -185,6 +186,9 @@ class UI {
     }
 
     cartLogic(){
+        finishBtn.addEventListener('click', () =>{
+            this.finish();
+        });
         /*==========================================================
         /
         /                   LIMPAR CARRINHO
@@ -277,6 +281,40 @@ class UI {
         })
     }
 
+    finish(){
+        var ItemsFinish  = '[Pedido]%20';
+        var index = 0;
+        var all_items_total = 0;
+
+        console.log(cart);
+        
+
+        while (index!=cart.length) {
+            var price_total = cart[index].price*cart[index].amount;
+            price_total = price_total.toFixed(2);
+
+            ItemsFinish +=  
+            cart[index].amount+' Unidade(s)%20de%20'+
+            cart[index].title+',%20';
+            index++;
+                        
+            
+            all_items_total = parseFloat(price_total)+parseFloat(all_items_total);
+        }
+
+        ItemsFinish+=`Valor%20Total%20da%20Compra:%20R$%20${all_items_total}`;
+
+        window.open('https://api.whatsapp.com/send?phone=+5571987284237&text='+ItemsFinish, '_blank');
+
+
+        console.log(ItemsFinish);
+
+        //https://web.whatsapp.com/send?phone=+5511957729354&text=Estava+no+site+e+quero+saber+mais+informa%C3%A7%C3%B5es+sobre+...
+
+
+
+    }
+
     clearCart(){
         let cartItems = cart.map(item => item.id);
         cartItems.forEach(id => this.removeItem(id));
@@ -295,7 +333,7 @@ class UI {
         Storage.saveCart(cart);        
         let button = this.getSingleButton(id);
         button.disabled = false;
-        button.innerHTML = `<i class="fa fa-shopping-cart"></i>add to cart`;
+        button.innerHTML = `<i class="fa fa-shopping-cart"></i>Comprar`;
     }
 
     getSingleButton(id){
