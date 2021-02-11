@@ -187,6 +187,8 @@ body {
 }
 
 .finish {
+  display: inline-block;
+  margin-top: 5%;
   padding: 1rem 3rem;
   text-transform: uppercase;
   letter-spacing: var(--mainSpacing);

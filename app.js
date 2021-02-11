@@ -10,8 +10,9 @@ const cartItems = document.querySelector('.cart-items');
 const cartContent = document.querySelector('.cart-content');
 const productsDOM = document.querySelector('.products-center');
 const finishBtn = document.querySelector('.finish');
-
 const btns = document.querySelectorAll(".bag-btn");
+
+const phone_number = '+5571987284237';
 
 // cart
 let cart = [];
@@ -282,7 +283,7 @@ class UI {
     }
 
     finish(){
-        var ItemsFinish  = '[Pedido]%20';
+        var ItemsFinish  = '';
         var index = 0;
         var all_items_total = 0;
 
@@ -303,13 +304,10 @@ class UI {
         }
 
         ItemsFinish+=`Valor%20Total%20da%20Compra:%20R$%20${all_items_total}`;
+        
+        this.clearCart();
 
-        window.open('https://api.whatsapp.com/send?phone=+5571987284237&text='+ItemsFinish, '_blank');
-
-
-        console.log(ItemsFinish);
-
-        //https://web.whatsapp.com/send?phone=+5511957729354&text=Estava+no+site+e+quero+saber+mais+informa%C3%A7%C3%B5es+sobre+...
+        window.open('https://api.whatsapp.com/send?phone='+phone_number+'&text='+ItemsFinish, '_blank');
 
 
 
