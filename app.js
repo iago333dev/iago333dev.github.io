@@ -12,7 +12,7 @@ const productsDOM = document.querySelector('.products-center');
 const finishBtn = document.querySelector('.finish');
 const btns = document.querySelectorAll(".bag-btn");
 
-const phone_number = '+5571987284237';
+const phone_number = '+5571981000000';
 
 // cart
 let cart = [];
