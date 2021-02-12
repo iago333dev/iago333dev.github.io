@@ -300,7 +300,7 @@ class UI {
             price_total = price_total.toFixed(2);
 
             ItemsFinish +=  
-            cart[index].amount+' Unidade(s)%20de%20'+
+            cart[index].amount+' Kilo(s)%20de%20'+
             cart[index].title+',%20';
             index++;
                         
@@ -382,6 +382,9 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 
 function ScrollToBottom() {
-    window.scrollTo({ top: 800, behavior: 'smooth' })  
+    window.scrollTo({ top: 900, behavior: 'smooth' })  
+}
+function ScrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })  
 }
 
