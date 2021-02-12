@@ -93,9 +93,9 @@
 }
 
 :root {
-  --primaryColor: #f9b605;
+  --primaryColor: #fbf843;
   --mainWhite: #fff;
-  --mainBlack: #222;
+  --mainBlack: rgb(54, 54, 54);
   --mainGrey: #ececec;
   --mainSpacing: 0.1rem;
   --mainTransition: all 0.3s linear;
@@ -145,7 +145,7 @@ body {
   background: var(--primaryColor);
   padding: 0 5px;
   border-radius: 30%;
-  color: var(--mainWhite);
+  color: var(--mainBlack);
 }
 /* --------------- End of Navbar ---------------- */
 /* --------------- Hero ---------------- */
