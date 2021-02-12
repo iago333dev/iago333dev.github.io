@@ -13,6 +13,12 @@ const finishBtn = document.querySelector('.finish');
 const btns = document.querySelectorAll(".bag-btn");
 const phone_number = '+5571981000000';
 
+var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+link.type = 'image/x-icon';
+link.rel = 'shortcut icon';
+link.href = './public/icon.ico';
+document.getElementsByTagName('head')[0].appendChild(link);
+
 
 // cart
 let cart = [];
