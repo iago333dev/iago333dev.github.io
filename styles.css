@@ -93,13 +93,14 @@
 }
 
 :root {
-  --primaryColor: #fbf843;
+  --primaryColor: #ebe832;
   --mainWhite: #fff;
   --mainBlack: rgb(54, 54, 54);
-  --mainGrey: #ececec;
+  --mainGrey: #5f5f5f;
   --mainSpacing: 0.1rem;
   --mainTransition: all 0.3s linear;
   --colarOverlay: #fffb0057;
+  --cartBack: #cfcfcf;
 }
 * {
   margin: 0;
@@ -300,7 +301,7 @@ body {
   height: 100%;
   overflow: scroll;
   z-index: 3;
-  background: rgb(231, 226, 221);
+  background: var(--cartBack);
   padding: 1.5rem;
   transition: var(--mainTransition);
   transform: translateX(100%);
@@ -353,8 +354,9 @@ body {
   text-align: center;
 }
 .remove-item {
-  color: grey;
+  color: var(--mainBlack);
   cursor: pointer;
+  text-shadow: 0.1em 0.1em rgb(255, 255, 255);
 }
 .fa-chevron-up,
 .fa-chevron-down {

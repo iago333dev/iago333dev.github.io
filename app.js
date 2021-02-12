@@ -160,9 +160,9 @@ class UI {
                 <span class="remove-item" data-id=${item.id}>Remover</span>
             </div>
             <div>
-                <i class="fa fa-chevron-up" data-id=${item.id}></i>
-                <p class="item-amount">${item.amount}</p>
-                <i class="fa fa-chevron-down" data-id=${item.id}></i>
+                <i class="fa fa-chevron-up fa-2x" data-id=${item.id}></i>
+                <a class="item-amount">${item.amount}</a> Kg
+                <i class="fa fa-chevron-down fa-2x" data-id=${item.id}></i>
             </div>`;
             cartContent.appendChild(div);
             
