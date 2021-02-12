@@ -11,7 +11,7 @@ const cartContent = document.querySelector('.cart-content');
 const productsDOM = document.querySelector('.products-center');
 const finishBtn = document.querySelector('.finish');
 const btns = document.querySelectorAll(".bag-btn");
-const phone_number = '+5571981000000';
+const phone_number = '+5571981367152';
 
 var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
 link.type = 'image/x-icon';
@@ -22,7 +22,6 @@ document.getElementsByTagName('head')[0].appendChild(link);
 
 // cart
 let cart = [];
-
 let buttonsDOM = [];
 
 //getting the products
