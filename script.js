@@ -1,6 +1,4 @@
 
-
-
 //Capture the click event on a location
 $("#location-bar a").click(function(event){
   event.preventDefault();
@@ -17,3 +15,5 @@ $("#location-bar a").click(function(event){
   //update tooltip 'address'
   $('.selectedLocation').text(selectedLocation);
 });
+
+

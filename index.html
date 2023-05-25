@@ -16,11 +16,12 @@
   
   <link rel="stylesheet" href="./underbar.css">
   <link rel="stylesheet" href="./charts.css">
-
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+\
   <link rel="stylesheet" href="./particles.css">
-
   <link rel="stylesheet" href="./style.css">
+
 
 <!--===========================================================================   
 
@@ -141,20 +142,24 @@
     <div id='content-c'>
       <div id='left'>
         <div id='map'>
-          <div class="row">
+          <!--div class="row">
             <div class="col-6 col-md-6">
               <h3 class="title">Relação: Tempo Desenvolvendo em Cada Tecnologias </h3>
-              <div class="chart doughnut-chart dark">                
-                <canvas height="500" id="doughnutChartDark"></canvas>
-              </div>              
+
+                        
             </div>
             <div class="col-6 col-md-6">
               <h3 class="title">Relação: Tempo Dedicado ao Estudo de Cada Tecnologias</h3>
               <div class="chart bar-chart light">                
-                <canvas height="500" id="barChartHDark"></canvas>
+                <canvas height="250" id="barChartHDark"></canvas>
               </div>              
             </div>  
-          </div>        
+          </div-->      
+
+          <div class="chart doughnut-chart dark">
+            <canvas height="380" id="doughnutChartDark"></canvas>
+          </div>
+
         </div>
       </div>
     </div>
@@ -174,13 +179,54 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 <script src='https://cdn.jsdelivr.net/jquery.selectric/1.10.1/jquery.selectric.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js'></script><script  src="./script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js'></script>
+<script  src="./script.js"></script>
+<script  src="./chart.js"></script>
+<script  src="./apexcharts.js"></script>
 
 <!-- partial -->
 <script  src="./particles.js"></script>
 <script  src="./underbar.js"></script>
 <script  src="./charts.js"></script>
 <script  src="./cursor.js"></script>
+<script>
+
+// Exemplo de configuração e dados para o gráfico de rosca (doughnut)
+var doughnutConfig = {
+  type: 'doughnut',
+  data: {
+    labels: ['Tecnologia 1', 'Tecnologia 2', 'Tecnologia 3'],
+    datasets: [{
+      data: [30, 40, 20],
+      backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
+    }]
+  },
+  options: {
+    responsive: true,
+  }
+};
+
+// Exemplo de configuração e dados para o gráfico de barras
+var barConfig = {
+  chart: {
+    type: 'bar',
+    height: 400
+  },
+  series: [{
+    name: 'Horas',
+    data: [50, 70, 40, 60, 80]
+  }],
+  xaxis: {
+    categories: ['Tecnologia 1', 'Tecnologia 2', 'Tecnologia 3', 'Tecnologia 4', 'Tecnologia 5']
+  }
+};
+
+// Crie os gráficos usando as bibliotecas Chart.js e ApexCharts
+var doughnutChart = new Chart(document.getElementById('doughnutChartDark'), doughnutConfig);
+var barChart = new ApexCharts(document.getElementById('barChartHDark'), barConfig);
+barChart.render();
+
+</script>
 
 
 

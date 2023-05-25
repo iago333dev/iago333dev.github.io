@@ -1,6 +1,18 @@
 @import "https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/dashboard.scss";
 
+#map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.chart.doughnut-chart.dark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 90%;
+}
 
 .sidebar {
   background-color: #1b2431;
