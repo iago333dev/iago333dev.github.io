@@ -1,235 +1,255 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>iago333dev</title>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Meu Portfólio</title>
+    <script
+      id="sap-ui-bootstrap"
+      src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+      data-sap-ui-theme="sap_fiori_3"
+      data-sap-ui-libs="sap.m"
+      data-sap-ui-async="true"
+    ></script>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+      }
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,600" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/jquery.selectric/1.10.1/selectric.css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="./style.css">
+      .fioriHeader {
+        background-color: #354a5f;
+        color: white;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        font-family: "72", "72full", Arial, Helvetica, sans-serif;
+      }
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@1&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@1&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@1&family=Raleway:wght@100&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="./underbar.css">
-  <link rel="stylesheet" href="./charts.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-\
-  <link rel="stylesheet" href="./particles.css">
-  <link rel="stylesheet" href="./style.css">
+      .fioriHeader img {
+        height: 1.8rem;
+        margin-right: 1rem;
+      }
 
+      .sapUiBody {
+        padding-top: 3rem;
+      }
 
-<!--===========================================================================   
+      .filtroEspacado > * {
+        margin-right: 1rem;
+      }
 
-                                  NAVBAR
-@Iago3__dev
-===========================================================================-->
-  
+      .dropdownText {
+        font-size: 1rem;
+        color: #0a6ed1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+      }
 
+      .dropdownText::after {
+        content: "▼";
+        font-size: 0.75rem;
+        margin-left: 0.4rem;
+      }
+    </style>
+  </head>
 
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!-- particles.js container --> 
-<div id="particles-js"></div>
-
-<div clas="nav">
-  <nav>
-    <div class="underline"></div>
-    <div class="underline"></div>
-    <div class="underline"></div>
-    <a onClick="ul(0)">Bash</a><a onClick="ul(1)">Habilidades</a><a onClick="ul(2)">Formação Acadêmica</a><a onClick="ul(3)">Experiências Profissionais</a><a onClick="ul(4)">Contato</a>
-  </nav>
-</div>
-
-
-
-<!--===========================================================================   
-
-                                  END NAVBAR
-@Iago3__dev
-===========================================================================-->
-
-<!--===========================================================================   
-
-                                  EXPERIENCIAS PROFISSIONAIS
-@Iago3__dev
-===========================================================================-->
-
-<div id='exp' class="iago-overlay">
-  <div id='browser-bar'>
-    <div class='circles'></div>
-    <div class='circles'></div>
-    <div class='circles'></div>
-    <p></p>
-    <span class='arrow entypo-resize-full'></span>
-  </div>
-  <div>
-    <div id='content-c'>
-      <div id='left'>
-        <div id='map'>
-
-        </div>
-      </div>
+  <body>
+    <div class="fioriHeader">
+      <img src="https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg" />
+      <span>Manage Portfolio Projects</span>
     </div>
-  </div>
-</div>
-<!--===========================================================================   
 
-                                END CONHEC -> CHARTS
-@Iago3__dev
-===========================================================================-->
+    <div id="content" class="sapUiBody"></div>
+
+    <script>
+      sap.ui.getCore().attachInit(function () {
+      const aProjetos = [
+        {
+          empresa: "SAP Brasil",
+          inicio: "2023-01-10",
+          fim: "2023-03-20",
+          descricao: "Atuação com Fiori Elements e SAP S/4HANA na criação de apps analíticos.",
+        },
+        {
+          empresa: "Totvs",
+          inicio: "2022-11-01",
+          fim: "2023-01-15",
+          descricao: "Desenvolvimento de relatórios em ABAP para módulos financeiros.",
+        },
+        {
+          empresa: "Accenture",
+          inicio: "2024-02-05",
+          fim: "2024-05-30",
+          descricao: "Consultoria técnica em projetos SAPUI5 para clientes internacionais.",
+        },
+        {
+          empresa: "Gepetinho Corp",
+          inicio: "2025-01-01",
+          fim: "2025-06-01",
+          descricao: "GPT autogerenciado com projetos SAP inteligentes e piadas ruins.",
+        }
+      ];
+
+      // 🔄 Modelo carregado com os dados acima
+      const oModel = new sap.ui.model.json.JSONModel({ Projetos: aProjetos });
+      sap.ui.getCore().setModel(oModel);
+
+        // 🔹 Topo: botão Standard ▼
+        const oTopBar = new sap.m.Toolbar({
+          content: [
+            new sap.ui.core.HTML({
+              content: '<div class="dropdownText">Standard</div>',
+            }),
+          ],
+        });
+
+        // 🔹 Filtros
+        const oEmpresaField = new sap.m.Input({
+          placeholder: "Empresa",
+          showValueHelp: true,
+        });
+
+        const oDataInicio = new sap.m.DatePicker({
+          placeholder: "Data Início",
+          displayFormat: "yyyy-MM-dd",
+        });
+
+        const oDataFim = new sap.m.DatePicker({
+          placeholder: "Data Fim",
+          displayFormat: "yyyy-MM-dd",
+        });
+
+        const oGoButton = new sap.m.Button({
+          text: "Go",
+          type: "Emphasized",
+        });
+
+        const oAdaptButton = new sap.m.Button({
+          text: "Adapt Filters",
+          type: "Transparent",
+        });
+
+        const oFilterBar = new sap.m.Toolbar({
+          content: [oEmpresaField, oDataInicio, oDataFim, oGoButton, oAdaptButton],
+        }).addStyleClass("filtroEspacado");
+
+        // 🔹 Tabela de Projetos
+        const oTable = new sap.m.Table({
+          headerText: "Lista de Projetos",
+          columns: [
+            new sap.m.Column({ header: new sap.m.Label({ text: "Empresa" }) }),
+            new sap.m.Column({ header: new sap.m.Label({ text: "Data Início" }) }),
+            new sap.m.Column({ header: new sap.m.Label({ text: "Data Fim" }) }),
+          ],
+          items: {
+            path: "/Projetos",
+            template: new sap.m.ColumnListItem({
+              type: "Navigation",
+              press: function (oEvent) {
+                const oContext = oEvent.getSource().getBindingContext();
+                oDetailPage.setBindingContext(oContext); // define o contexto da Object Page
+                oApp.to(oDetailPage);
+              },
+              cells: [
+                new sap.m.Text({ text: "{empresa}" }),
+                new sap.m.Text({ text: "{inicio}" }),
+                new sap.m.Text({ text: "{fim}" }),
+              ],
+            }),
+          },
+        });
+
+        // 🔹 Página principal
+        const oListPage = new sap.m.Page({
+          showHeader: false,
+          content: [oTopBar, oFilterBar, oTable],
+        });
+
+        // 🔹 Página de Detalhes
+        const oDetailText = new sap.m.Text({ text: "" });
+
+        const oDetailPage = new sap.m.Page({
+          showHeader: false,
+          content: [
+            // Header personalizado com botão voltar
+            new sap.m.Toolbar({
+              content: [
+                new sap.m.Button({
+                  icon: "sap-icon://nav-back",
+                  type: "Transparent",
+                  press: () => oApp.back(),
+                }),
+                new sap.m.Title({ text: "Detalhes do Projeto" }),
+              ],
+            }),
+
+            // IconTabBar simulando abas da Object Page
+            new sap.m.IconTabBar({
+              expandable: false,
+              items: [
+                new sap.m.IconTabFilter({
+                  key: "general",
+                  text: "Informações Gerais",
+                  content: [
+                    new sap.m.VBox({
+                      width: "95%", // espaçamento horizontal
+                      alignItems: "Start",
+                      justifyContent: "Start",
+                      items: [
+                        new sap.m.ObjectHeader({
+                          title: "{empresa}",
+                          number: "{inicio} até {fim}",
+                          intro: "Resumo do Emprego",
+                        }),
+                        new sap.m.Text({ text: "{descricao}" }),
+                      ],
+                    }),
+                  ],
+                }),
+
+                new sap.m.IconTabFilter({
+                  key: "tecnico",
+                  text: "Resumo Técnico",
+                  content: [
+                    new sap.m.VBox({
+                      width: "95%",
+                      items: [
+                        new sap.m.Text({ text: "ABAP, UI5, Gateway, CDS, RAP..." }),
+                      ],
+                    }),
+                  ],
+                }),
+
+                new sap.m.IconTabFilter({
+                  key: "contact",
+                  text: "Contato",
+                  content: [
+                    new sap.m.VBox({
+                      width: "95%",
+                      items: [
+                        new sap.m.Text({ text: "Email: exemplo@empresa.com" }),
+                        new sap.m.Text({ text: "Telefone: +55 11 99999-9999" }),
+                      ],
+                    }),
+                  ],
+                }),
 
 
-  
+              ],
+            }),
+          ],
+        });
 
-<!--===========================================================================   
+        // 🔹 App container com navegação
+        const oApp = new sap.m.App({
+          pages: [oListPage, oDetailPage],
+        });
 
-                                  CONTAINER BROWSER -> TERMINAL LINUX
-@Iago3__dev
-===========================================================================-->
-  
-
-
-<div id='browser' class="iago-overlay">
-  <div id='browser-bar'>
-    <div class='circles'></div>
-    <div class='circles'></div>
-    <div class='circles'></div>
-    <p></p>
-    <span class='arrow entypo-resize-full'></span>
-  </div>
-  <div id='content'>
-    <div id='left'>
-      <div id='map'>
-        <h1></h1>
-        <div class="row interno">
-          <p>
-          @iago333dev: # qmsou -h<br>
-          Bash: quem_sou: Dev full-stack sempre amador por sempre estar aprendendo e por sempre ser amante da tecnologia.<br>
-          @iago333dev: # qmsou -lang: "bahianes" largue_o_doce<br>
-          Bash: quem_sou: O combustivel do meu presente é o futuro, o novo: poder criar hoje o amanhã é oque me motiva.<br>
-          @iago333dev: # qmsou -job<br>
-          Bash: Trabalho: foco e produtividade!, Estipulo metas e recompensas para me manter sempre animado!</br>
-           <small class="extra">Admito que metas e recompensas corporativas me animam mais.</small></br>
-          @iago333dev:<span id="cursor">|</span>
-          
-          </p>  <br></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--===========================================================================   
-
-                                  CONHEC -> CHARTS
-@Iago3__dev
-===========================================================================-->
-
-  <div id='conhec' class="iago-overlay">
-    <div id='browser-bar'>
-      <div class='circles'></div>
-      <div class='circles'></div>
-      <div class='circles'></div>
-      <p></p>
-      <span class='arrow entypo-resize-full'></span>
-    </div>
-    <div id='content-c'>
-      <div id='left'>
-        <div id='map'>
-          <!--div class="row">
-            <div class="col-6 col-md-6">
-              <h3 class="title">Relação: Tempo Desenvolvendo em Cada Tecnologias </h3>
-
-                        
-            </div>
-            <div class="col-6 col-md-6">
-              <h3 class="title">Relação: Tempo Dedicado ao Estudo de Cada Tecnologias</h3>
-              <div class="chart bar-chart light">                
-                <canvas height="250" id="barChartHDark"></canvas>
-              </div>              
-            </div>  
-          </div-->      
-
-          <div class="chart doughnut-chart dark">
-            <canvas height="380" id="doughnutChartDark"></canvas>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--===========================================================================   
-
-                                  END CONHEC -> CHARTS
-@Iago3__dev
-===========================================================================-->
-
-
-
-<!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
-<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
-<script src='https://cdn.jsdelivr.net/jquery.selectric/1.10.1/jquery.selectric.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js'></script>
-<script  src="./script.js"></script>
-<script  src="./chart.js"></script>
-<script  src="./apexcharts.js"></script>
-
-<!-- partial -->
-<script  src="./particles.js"></script>
-<script  src="./underbar.js"></script>
-<script  src="./charts.js"></script>
-<script  src="./cursor.js"></script>
-<script>
-
-// Exemplo de configuração e dados para o gráfico de rosca (doughnut)
-var doughnutConfig = {
-  type: 'doughnut',
-  data: {
-    labels: ['Tecnologia 1', 'Tecnologia 2', 'Tecnologia 3'],
-    datasets: [{
-      data: [30, 40, 20],
-      backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
-    }]
-  },
-  options: {
-    responsive: true,
-  }
-};
-
-// Exemplo de configuração e dados para o gráfico de barras
-var barConfig = {
-  chart: {
-    type: 'bar',
-    height: 400
-  },
-  series: [{
-    name: 'Horas',
-    data: [50, 70, 40, 60, 80]
-  }],
-  xaxis: {
-    categories: ['Tecnologia 1', 'Tecnologia 2', 'Tecnologia 3', 'Tecnologia 4', 'Tecnologia 5']
-  }
-};
-
-// Crie os gráficos usando as bibliotecas Chart.js e ApexCharts
-var doughnutChart = new Chart(document.getElementById('doughnutChartDark'), doughnutConfig);
-var barChart = new ApexCharts(document.getElementById('barChartHDark'), barConfig);
-barChart.render();
-
-</script>
-
-
-
-
-</body>
+        oApp.placeAt("content");
+      });
+    </script>
+  </body>
 </html>
