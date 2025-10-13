@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Meu Portfólio</title>
+    <script
+      id="sap-ui-bootstrap"
+      src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+      data-sap-ui-theme="sap_fiori_3"
+      data-sap-ui-libs="sap.m"
+      data-sap-ui-async="true"
+    ></script>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+      }
+
+      .fioriHeader {
+        background-color: #354a5f;
+        color: white;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        font-family: "72", "72full", Arial, Helvetica, sans-serif;
+      }
+
+      .fioriHeader img {
+        height: 1.8rem;
+        margin-right: 1rem;
+      }
+
+      .sapUiBody {
+        padding-top: 3rem;
+      }
+
+      .filtroEspacado > * {
+        margin-right: 1rem;
+      }
+
+      .dropdownText {
+        font-size: 1rem;
+        color: #0a6ed1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+      }
+
+      .dropdownText::after {
+        content: "▼";
+        font-size: 0.75rem;
+        margin-left: 0.4rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="fioriHeader">
+      <img src="https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg" />
+      <span>Iago A. Curriculo</span>
+    </div>
+
+    <div id="content" class="sapUiBody"></div>
+
+    <script>
+      sap.ui.getCore().attachInit(function () {
+// ✅ DADOS CENTRALIZADOS: edite aqui suas experiências!
+      const aProjetos = [
+        {
+          empresa: "NUMENIT",
+          inicio: "2024-08",
+          fim: "Atual",
+          cargo: "Analista SAP Fiori Pleno AMS",
+          descricao: "Suporte ao time AMS atendendo hà diversos chamados ABAP, UI5 e CDS View como entregavel houve o Desenvolvimento em RAP (Fiori) Relatorio MIR7 / FV60 para EBANX. e app de configuração de NF-e: Leis Fiscais Desenho técnico e Estimativa de Apps Fiori"
+        },
+        {
+          empresa: "DELOITTE",
+          inicio: "2024-01",
+          fim: "2024-08",
+          cargo: "Analista de Sistema Junior III",
+          descricao: "Migração para S/4HANA em cliente líder no setor de papel e celulose. Integração outbound ponta a ponta: S/4HANA → CPI → Plataforma Dootax via Consumer Proxy (SOAMANAGER) com função RFC.",
+        },
+        {
+          empresa: "GRUPO BOTICÁRIO",
+          inicio: "2022-09",
+          fim: "2023-07",
+          cargo: "Bussines Tech Analyst II",
+          descricao: "Migração para S/4HANA utilizando BTP, Fiori e CDS Views. Implementação de app via Fiori Extension para EWM. Atendimento a chamados ABAP. Desenvolvimento de micro-serviço SAP TM / Kafka usando NodeJS.",
+        },
+        {
+          empresa: "CAPGEMINI",
+          inicio: "2022-01",
+          fim: "2022-09",
+         cargo: "Consutant ERP II",
+          descricao: "Consultant ERP II em projeto para empresa têxtil na implementação de S/4HANA. Tecnologias utilizadas: Adobe Forms, ABAP, Fiori, SAP Gateway (SEGW).",
+        },
+        {
+          empresa: "CAPGEMINI",
+          inicio: "2021-06",
+          fim: "2021-12",
+          cargo: "Consutant ERP I",
+          descricao: "Academia ABAP, Posteriormente Atendimento a chamados AMS Utilizando ABAP, FIORI, SEGW, SmartForms UI5...",
+        },
+        {
+          empresa: "JR&B",
+          inicio: "2021-02",
+          fim: "2021-04",
+          cargo: "Estagio Em Desenvolvimento",
+          descricao: "Foi Implementado funcionalidades a um GED. Utilizando Tecnologias Como React, TypeScript & Next.",
+        },
+        {
+          empresa: "CAMPUS MAKER",
+          inicio: "2020-05",
+          fim: "2020-11",
+          cargo: "Estagio Em Desenvolvimento",
+          descricao: "Estágio em Desenvolvimento. Manutenção em CRM feito em Ruby on Rails. Utilizou Ruby, jQuery e JavaScript. Implementou sincronização de dados com API ASP .NET.",
+        },
+        {
+          empresa: "PROIMAGEM 3D",
+          inicio: "2020-01",
+          fim: "2020-04",
+          cargo: "Estagio Em Desenvolvimento",
+          descricao: "Estágio em Desenvolvimento. Manutenção e implementação de funcionalidades em CRM utilizando CakePHP e JavaScript.",
+        }
+      ];
+
+
+      // 🔄 Modelo carregado com os dados acima
+      const oModel = new sap.ui.model.json.JSONModel({ Projetos: aProjetos });
+      sap.ui.getCore().setModel(oModel);
+
+        // 🔹 Topo: botão Standard ▼
+        const oTopBar = new sap.m.Toolbar({
+          content: [
+            new sap.ui.core.HTML({
+              content: '<div class="dropdownText">Standard</div>',
+            }),
+          ],
+        });
+
+        // 🔹 Filtros
+        const oEmpresaField = new sap.m.Input({
+          placeholder: "Empresa",
+          showValueHelp: true,
+        });
+
+        const oDataInicio = new sap.m.DatePicker({
+          placeholder: "Data Início",
+          displayFormat: "yyyy-MM-dd",
+        });
+
+        const oDataFim = new sap.m.DatePicker({
+          placeholder: "Data Fim",
+          displayFormat: "yyyy-MM-dd",
+        });
+
+        const oGoButton = new sap.m.Button({
+          text: "Go",
+          type: "Emphasized",
+        });
+
+        const oAdaptButton = new sap.m.Button({
+          text: "Adapt Filters",
+          type: "Transparent",
+        });
+
+        const oFilterBar = new sap.m.Toolbar({
+          content: [oEmpresaField, oDataInicio, oDataFim, oGoButton, oAdaptButton],
+        }).addStyleClass("filtroEspacado");
+
+        // 🔹 Tabela de Projetos
+        const oTable = new sap.m.Table({
+          headerText: "Lista de Experiências",
+          columns: [
+            new sap.m.Column({ header: new sap.m.Label({ text: "Empresa" }) }),
+            new sap.m.Column({ header: new sap.m.Label({ text: "Cargo" }) }),
+            new sap.m.Column({ header: new sap.m.Label({ text: "Data Início" }) }),
+            new sap.m.Column({ header: new sap.m.Label({ text: "Data Fim" }) }),
+          ],
+          items: {
+            path: "/Projetos",
+            template: new sap.m.ColumnListItem({
+              type: "Navigation",
+              press: function (oEvent) {
+                const oContext = oEvent.getSource().getBindingContext();
+                oDetailPage.setBindingContext(oContext); // define o contexto da Object Page
+                oApp.to(oDetailPage);
+              },
+              cells: [
+              new sap.m.Text({ text: "{empresa}" }),
+              new sap.m.Text({ text: "{cargo}" }),
+              new sap.m.Text({ text: "{inicio}" }),
+              new sap.m.Text({ text: "{fim}" }),
+            ],
+            }),
+          },
+        });
+
+        // 🔹 Página principal
+        const oListPage = new sap.m.Page({
+          showHeader: false,
+          content: [
+            new sap.m.IconTabBar({
+              expandable: false,
+              items: [
+              new sap.m.IconTabFilter({
+                key: "resumo",
+                text: "Resumo",
+                content: [
+                  new sap.m.VBox({
+                    width: "95%",
+                    padding: "2rem",
+                    items: [
+                      new sap.m.Title({ text: "Sobre Mim", level: "H2" }),
+                      new sap.m.FormattedText({
+                        htmlText: `
+                          Desenvolvedor SAP ABAP Pleno com sólida experiência em projetos de implementação e suporte no ambiente SAP atuando principalmente com ABAP, Fiori e S/4HANA.<br>
+                          Com uma jornada iniciada em 2018, busco constantemente aprimorar meus conhecimentos.<br>
+                          Ao longo da carreira tive a oportunidade de obter a certificação 
+                          <a target="_blank" href="https://www.credly.com/badges/88eaaff6-28fe-4191-9845-1a4f87e7239d/linked_in_profile" style="color:#0a6ed1; text-decoration: none;">
+                            SAP Fiori Application Developer
+                          </a>, reafirmando meu compromisso com o desenvolvimento de soluções inovadoras e eficientes no ecossistema SAP.<br>
+                          Contribuí tambem com o desenvolvimento de aplicações customizadas, participei de projetos de migração para S/4HANA e implementei integrações complexas, utilizando SAP CPI e micro-serviços.<br>
+                          
+                        `
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+                new sap.m.IconTabFilter({
+                  key: "experiencias",
+                  text: "Experiências",
+                  content: [
+                    oTopBar,
+                    oFilterBar,
+                    oTable,
+                  ],
+                }),
+                new sap.m.IconTabFilter({
+                key: "certificados",
+                text: "Formação e Certificados",
+                content: [
+                  new sap.m.VBox({
+                    width: "95%",
+                    padding: "2rem",
+                    items: [
+                      new sap.m.Title({ text: "Formação Acadêmica", level: "H2" }),
+                      new sap.m.Text({ text: "IFBA – Análise e Desenvolvimento de Sistemas (trancado)" }),
+                      new sap.m.Text({ text: "SENAI – Técnico em Desenvolvimento de Sistemas (concluído - 2021)" }),
+                      new sap.m.Text({ text: "SAP Certified Development Associate - SAP Fiori Application Developer (Capgemini - 2022)" }),
+                      new sap.m.Text({ text: "SAP Academy 2021 (ABAP ECC, FIORI Fundamentals, SAP HANA, FIORI Advanced)" }),
+                    ],
+                  }),
+                ],
+              }),
+              new sap.m.IconTabFilter({
+                key: "Contatos",
+                text: "Contatos",
+                content: [
+                  new sap.m.VBox({
+                    width: "95%",
+                    padding: "2rem",
+                    items: [
+                      new sap.m.Title({ text: "Email:", level: "H2" }),
+                      new sap.m.Text({ text: "alvesiago639@gmail.com" }),
+                                            new sap.m.FormattedText({htmlText: `<br>`}),
+                      new sap.m.Title({ text: "Telefone:", level: "H2" }),
+                      new sap.m.Text({ text: "71 9 96289490" }),
+                                            new sap.m.FormattedText({htmlText: `<br>`}),
+                      new sap.m.Title({ text: "Linkedin:", level: "H2" }),
+                      new sap.m.Text({ text: "Iago333dev" }),
+                      new sap.m.FormattedText({htmlText: `<br>`}),
+                    ],
+                  }),
+                ],
+              }),
+              ],
+            }),
+          ],
+        });
+
+        // 🔹 Página de Detalhes
+        const oDetailText = new sap.m.Text({ text: "" });
+
+        const oDetailPage = new sap.m.Page({
+          showHeader: false,
+          content: [
+            // Header personalizado com botão voltar
+            new sap.m.Toolbar({
+              content: [
+                new sap.m.Button({
+                  icon: "sap-icon://nav-back",
+                  type: "Transparent",
+                  press: () => oApp.back(),
+                }),
+                new sap.m.Title({ text: "Detalhes do Projeto" }),
+              ],
+            }),
+
+            // IconTabBar simulando abas da Object Page
+            new sap.m.IconTabBar({
+              expandable: false,
+              items: [
+                new sap.m.IconTabFilter({
+                  key: "general",
+                  text: "Informações Gerais",
+                  content: [
+                    new sap.m.VBox({
+                      width: "95%", // espaçamento horizontal
+                      alignItems: "Start",
+                      justifyContent: "Start",
+                      items: [
+                        new sap.m.ObjectHeader({
+                          title: "{empresa}",
+                          number: "{inicio} até {fim}",
+                          intro: "{cargo}",
+                        }),
+                        new sap.m.Text({ text: "{descricao}" }),
+                      ],
+                    }),
+                  ],
+                }),
+              ],
+            }),
+          ],
+        });
+
+        // 🔹 App container com navegação
+        const oApp = new sap.m.App({
+          pages: [oListPage, oDetailPage],
+        });
+
+        oApp.placeAt("content");
+      });
+    </script>
+  </body>
+</html>

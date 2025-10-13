@@ -11,55 +11,349 @@
       data-sap-ui-async="true"
     ></script>
     <style>
+      :root {
+        --sap-brand-color: #0a6ed1;
+        --sap-background-color: #f7f7f7;
+        --sap-text-color: #32363a;
+        --sap-border-color: #d1d5da;
+        --sap-header-color: #354a5f;
+        --sap-card-background: #ffffff;
+        --sap-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+        --sap-spacing-xs: 0.25rem;
+        --sap-spacing-s: 0.5rem;
+        --sap-spacing-m: 1rem;
+        --sap-spacing-l: 1.5rem;
+        --sap-spacing-xl: 2rem;
+        --sap-border-radius: 0.25rem;
+      }
+
+      [data-theme="dark"] {
+        --sap-background-color: #1a1a1a;
+        --sap-text-color: #ffffff;
+        --sap-border-color: #404040;
+        --sap-card-background: #2d2d2d;
+        --sap-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3);
+      }
+
       body, html {
         margin: 0;
         padding: 0;
+        font-family: "72", "72full", Arial, Helvetica, sans-serif;
+        background-color: var(--sap-background-color);
+        color: var(--sap-text-color);
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
 
       .fioriHeader {
-        background-color: #354a5f;
+        background-color: var(--sap-header-color);
         color: white;
-        height: 3rem;
+        height: 3.5rem;
         display: flex;
         align-items: center;
-        padding: 0 1rem;
+        justify-content: space-between;
+        padding: 0 var(--sap-spacing-l);
         font-family: "72", "72full", Arial, Helvetica, sans-serif;
+        box-shadow: var(--sap-shadow);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+
+      .fioriHeader .header-left {
+        display: flex;
+        align-items: center;
       }
 
       .fioriHeader img {
-        height: 1.8rem;
-        margin-right: 1rem;
+        height: 2rem;
+        margin-right: var(--sap-spacing-m);
+        filter: none;
+      }
+
+      .fioriHeader .header-right {
+        display: flex;
+        align-items: center;
+        gap: var(--sap-spacing-m);
+      }
+
+      .theme-toggle {
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: var(--sap-spacing-s) var(--sap-spacing-m);
+        border-radius: var(--sap-border-radius);
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: all 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.5);
       }
 
       .sapUiBody {
-        padding-top: 3rem;
+        padding-top: 3.5rem;
+        min-height: calc(100vh - 3.5rem);
       }
 
-      .filtroEspacado > * {
-        margin-right: 1rem;
+      .filtroEspacado {
+        padding: var(--sap-spacing-xl);
+        background: var(--sap-card-background);
+        border-radius: var(--sap-border-radius);
+        box-shadow: var(--sap-shadow);
+        margin: var(--sap-spacing-m);
+        min-height: auto;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .filtroEspacado .sapMHBox {
+        width: 100%;
+        gap: var(--sap-spacing-l);
+        margin-bottom: 0;
+      }
+
+      .filtroEspacado .sapMVBox {
+        flex: 1;
+        min-width: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+        max-width: none;
+      }
+
+      .filtroEspacado .sapMLabel {
+        font-weight: 600;
+        color: var(--sap-brand-color);
+        white-space: nowrap;
+        margin-bottom: var(--sap-spacing-xs);
+        font-size: 0.875rem;
+        text-align: left;
+      }
+
+      .filtroEspacado .sapMInput,
+      .filtroEspacado .sapMSelect {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+      }
+
+      .filtroEspacado .sapMButton {
+        width: 100%;
+        margin-top: 0;
+        min-width: 120px;
       }
 
       .dropdownText {
         font-size: 1rem;
-        color: #0a6ed1;
+        color: var(--sap-brand-color);
         cursor: pointer;
         display: flex;
         align-items: center;
-        font-weight: bold;
+        font-weight: 600;
+        padding: var(--sap-spacing-s) var(--sap-spacing-m);
+        border-radius: var(--sap-border-radius);
+        transition: all 0.3s ease;
+      }
+
+      .dropdownText:hover {
+        background-color: rgba(10, 110, 209, 0.1);
       }
 
       .dropdownText::after {
         content: "▼";
         font-size: 0.75rem;
-        margin-left: 0.4rem;
+        margin-left: var(--sap-spacing-s);
+        transition: transform 0.3s ease;
+      }
+
+      .dropdownText:hover::after {
+        transform: rotate(180deg);
+      }
+
+      .content-card {
+        background: var(--sap-card-background);
+        border-radius: var(--sap-border-radius);
+        box-shadow: var(--sap-shadow);
+        margin: var(--sap-spacing-m);
+        padding: var(--sap-spacing-l);
+        transition: all 0.3s ease;
+      }
+
+      .content-card:hover {
+        box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+      }
+
+      .section-title {
+        color: var(--sap-brand-color);
+        font-weight: 600;
+        margin-bottom: var(--sap-spacing-m);
+        font-size: 1.25rem;
+      }
+
+      .experience-item {
+        border-left: 3px solid var(--sap-brand-color);
+        padding-left: var(--sap-spacing-m);
+        margin-bottom: var(--sap-spacing-l);
+        transition: all 0.3s ease;
+      }
+
+      .experience-item:hover {
+        background: rgba(10, 110, 209, 0.05);
+        border-radius: var(--sap-border-radius);
+        padding: var(--sap-spacing-m);
+        margin-left: calc(-1 * var(--sap-spacing-m));
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--sap-spacing-m);
+        padding: var(--sap-spacing-s);
+        border-radius: var(--sap-border-radius);
+        transition: background-color 0.3s ease;
+      }
+
+      .contact-item:hover {
+        background: rgba(10, 110, 209, 0.05);
+      }
+
+      .contact-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: var(--sap-spacing-m);
+        color: var(--sap-brand-color);
+      }
+
+      .table-container {
+        background: var(--sap-card-background);
+        border-radius: var(--sap-border-radius);
+        box-shadow: var(--sap-shadow);
+        margin: var(--sap-spacing-m);
+        overflow: hidden;
+      }
+
+      .filter-container {
+        background: var(--sap-card-background);
+        border-radius: var(--sap-border-radius);
+        box-shadow: var(--sap-shadow);
+        margin: var(--sap-spacing-m);
+        padding: var(--sap-spacing-m);
+      }
+
+      @media (min-width: 769px) {
+        .filtroEspacado .sapMHBox {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        
+        .filtroEspacado .sapMVBox {
+          flex: 1;
+          margin-right: var(--sap-spacing-l);
+          margin-bottom: 0;
+        }
+        
+        .filtroEspacado .sapMVBox:last-child {
+          margin-right: 0;
+          flex: 0 0 auto;
+          min-width: 120px;
+        }
+        
+        .filtroEspacado .sapMVBox:nth-child(3),
+        .filtroEspacado .sapMVBox:nth-child(4) {
+          flex: 0 0 auto;
+          min-width: 140px;
+        }
+        
+        .filtroEspacado .sapMHBox {
+          gap: var(--sap-spacing-s);
+        }
+        
+        .filtroEspacado .sapMButton {
+          min-width: 80px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .fioriHeader {
+          padding: 0 var(--sap-spacing-m);
+        }
+        
+        .fioriHeader img {
+          height: 1.5rem;
+        }
+        
+        .content-card {
+          margin: var(--sap-spacing-s);
+          padding: var(--sap-spacing-m);
+        }
+        
+        .filtroEspacado {
+          padding: var(--sap-spacing-m);
+          margin: var(--sap-spacing-s);
+        }
+        
+        .filtroEspacado .sapMHBox {
+          flex-direction: column;
+          gap: var(--sap-spacing-s);
+        }
+        
+        .filtroEspacado .sapMVBox {
+          width: 100%;
+          max-width: none;
+          margin-right: 0;
+          margin-bottom: var(--sap-spacing-s);
+          flex: none;
+        }
+        
+        .filtroEspacado .sapMLabel {
+          font-size: 0.8rem;
+        }
+        
+        .filtroEspacado .sapMInput,
+        .filtroEspacado .sapMSelect {
+          min-width: auto;
+        }
+        
+        .filtroEspacado .sapMButton {
+          min-width: auto;
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .slide-in {
+        animation: slideIn 0.3s ease-out;
+      }
+
+      @keyframes slideIn {
+        from { transform: translateX(-20px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
       }
     </style>
   </head>
 
   <body>
     <div class="fioriHeader">
+      <div class="header-left">
       <img src="https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg" />
-      <span>Iago A. Curriculo</span>
+        <span>Iago A. Currículo</span>
+      </div>
+      <div class="header-right">
+        <button class="theme-toggle" onclick="toggleTheme()">
+          <span id="theme-icon">🌙</span> Modo Escuro
+        </button>
+      </div>
     </div>
 
     <div id="content" class="sapUiBody"></div>
@@ -73,56 +367,56 @@
           inicio: "2024-08",
           fim: "Atual",
           cargo: "Analista SAP Fiori Pleno AMS",
-          descricao: "Suporte ao time AMS atendendo hà diversos chamados ABAP, UI5 e CDS View como entregavel houve o Desenvolvimento em RAP (Fiori) Relatorio MIR7 / FV60 para EBANX. e app de configuração de NF-e: Leis Fiscais Desenho técnico e Estimativa de Apps Fiori"
+          descricao: "Suporte ao time AMS atendendo a diversos chamados ABAP, UI5 e CDS View. Como entregável houve o desenvolvimento em RAP (Fiori) do relatório MIR7/FV60 para EBANX e app de configuração de NF-e: Leis Fiscais. Desenho técnico e estimativa de Apps Fiori."
         },
         {
           empresa: "DELOITTE",
           inicio: "2024-01",
           fim: "2024-08",
-          cargo: "Analista de Sistema Junior III",
-          descricao: "Migração para S/4HANA em cliente líder no setor de papel e celulose. Integração outbound ponta a ponta: S/4HANA → CPI → Plataforma Dootax via Consumer Proxy (SOAMANAGER) com função RFC.",
+          cargo: "Analista de Sistema Júnior III",
+          descricao: "Migração para S/4HANA em cliente líder no setor de papel e celulose. Integração outbound ponta a ponta: S/4HANA → CPI → Plataforma Dootax via Consumer Proxy (SOAMANAGER) com função RFC."
         },
         {
           empresa: "GRUPO BOTICÁRIO",
           inicio: "2022-09",
           fim: "2023-07",
-          cargo: "Bussines Tech Analyst II",
-          descricao: "Migração para S/4HANA utilizando BTP, Fiori e CDS Views. Implementação de app via Fiori Extension para EWM. Atendimento a chamados ABAP. Desenvolvimento de micro-serviço SAP TM / Kafka usando NodeJS.",
+          cargo: "Business Tech Analyst II",
+          descricao: "Migração para S/4HANA utilizando BTP, Fiori e CDS Views. Implementação de app via Fiori Extension para EWM. Atendimento a chamados ABAP. Desenvolvimento de micro-serviço SAP TM/Kafka usando NodeJS."
         },
         {
           empresa: "CAPGEMINI",
           inicio: "2022-01",
           fim: "2022-09",
-         cargo: "Consutant ERP II",
-          descricao: "Consultant ERP II em projeto para empresa têxtil na implementação de S/4HANA. Tecnologias utilizadas: Adobe Forms, ABAP, Fiori, SAP Gateway (SEGW).",
+          cargo: "Consultant ERP II",
+          descricao: "Consultant ERP II em projeto para empresa têxtil na implementação de S/4HANA. Tecnologias utilizadas: Adobe Forms, ABAP, Fiori, SAP Gateway (SEGW)."
         },
         {
           empresa: "CAPGEMINI",
           inicio: "2021-06",
           fim: "2021-12",
-          cargo: "Consutant ERP I",
-          descricao: "Academia ABAP, Posteriormente Atendimento a chamados AMS Utilizando ABAP, FIORI, SEGW, SmartForms UI5...",
+          cargo: "Consultant ERP I",
+          descricao: "Academia ABAP. Posteriormente atendimento a chamados AMS utilizando ABAP, Fiori, SEGW, SmartForms UI5."
         },
         {
           empresa: "JR&B",
           inicio: "2021-02",
           fim: "2021-04",
-          cargo: "Estagio Em Desenvolvimento",
-          descricao: "Foi Implementado funcionalidades a um GED. Utilizando Tecnologias Como React, TypeScript & Next.",
+          cargo: "Estágio em Desenvolvimento",
+          descricao: "Implementação de funcionalidades em um GED utilizando tecnologias como React, TypeScript e Next.js."
         },
         {
           empresa: "CAMPUS MAKER",
           inicio: "2020-05",
           fim: "2020-11",
-          cargo: "Estagio Em Desenvolvimento",
-          descricao: "Estágio em Desenvolvimento. Manutenção em CRM feito em Ruby on Rails. Utilizou Ruby, jQuery e JavaScript. Implementou sincronização de dados com API ASP .NET.",
+          cargo: "Estágio em Desenvolvimento",
+          descricao: "Estágio em Desenvolvimento. Manutenção em CRM feito em Ruby on Rails. Utilizou Ruby, jQuery e JavaScript. Implementou sincronização de dados com API ASP.NET."
         },
         {
           empresa: "PROIMAGEM 3D",
           inicio: "2020-01",
           fim: "2020-04",
-          cargo: "Estagio Em Desenvolvimento",
-          descricao: "Estágio em Desenvolvimento. Manutenção e implementação de funcionalidades em CRM utilizando CakePHP e JavaScript.",
+          cargo: "Estágio em Desenvolvimento",
+          descricao: "Estágio em Desenvolvimento. Manutenção e implementação de funcionalidades em CRM utilizando CakePHP e JavaScript."
         }
       ];
 
@@ -131,9 +425,48 @@
       const oModel = new sap.ui.model.json.JSONModel({ Projetos: aProjetos });
       sap.ui.getCore().setModel(oModel);
 
+        // Contador de resultados
+        const oResultCount = new sap.m.Text({
+          text: `${aProjetos.length} experiências encontradas`,
+          textAlign: "End"
+        });
+
+        // Função para atualizar contador de resultados
+        function updateResultCount() {
+          const binding = oTable.getBinding("items");
+          const count = binding ? binding.getLength() : aProjetos.length;
+          const countText = count === 1 ? "1 experiência encontrada" : `${count} experiências encontradas`;
+          oResultCount.setText(countText);
+          
+          // Reprocessar status após filtros
+          setTimeout(() => {
+            const tableItems = oTable.getItems();
+            tableItems.forEach((item, index) => {
+              const cells = item.getCells();
+              if (cells && cells.length >= 5) {
+                const statusCell = cells[4]; // Coluna de status (5ª coluna)
+                const context = item.getBindingContext();
+                if (context) {
+                  const data = context.getObject();
+                  if (data.fim === 'Atual') {
+                    statusCell.setText('Ativo');
+                    statusCell.setState('Success');
+                  } else {
+                    statusCell.setText('Concluído');
+                    statusCell.setState('None');
+                  }
+                }
+              }
+            });
+          }, 100);
+        }
+
         // 🔹 Topo: botão Standard ▼
         const oTopBar = new sap.m.Toolbar({
           content: [
+            new sap.m.Title({ text: "Filtros de Experiências" }),
+            new sap.m.ToolbarSpacer(),
+            oResultCount,
             new sap.ui.core.HTML({
               content: '<div class="dropdownText">Standard</div>',
             }),
@@ -142,42 +475,183 @@
 
         // 🔹 Filtros
         const oEmpresaField = new sap.m.Input({
-          placeholder: "Empresa",
+          placeholder: "Filtrar por empresa...",
           showValueHelp: true,
+          valueHelpRequest: function() {
+            // Implementar sugestões de empresas
+            const empresas = [...new Set(aProjetos.map(p => p.empresa))];
+            // Aqui poderia implementar um popover com sugestões
+          }
+        });
+
+        const oCargoField = new sap.m.Input({
+          placeholder: "Filtrar por cargo..."
         });
 
         const oDataInicio = new sap.m.DatePicker({
           placeholder: "Data Início",
-          displayFormat: "yyyy-MM-dd",
+          displayFormat: "yyyy-MM-dd"
         });
 
         const oDataFim = new sap.m.DatePicker({
           placeholder: "Data Fim",
-          displayFormat: "yyyy-MM-dd",
+          displayFormat: "yyyy-MM-dd"
         });
+
+        // Função para aplicar filtros de data
+        function applyDateFilters() {
+          const dataInicio = oDataInicio.getDateValue();
+          const dataFim = oDataFim.getDateValue();
+          
+          let filters = [];
+          
+          if (dataInicio) {
+            const inicioFormatted = formatDateForFilter(dataInicio);
+            filters.push(new sap.ui.model.Filter("inicio", sap.ui.model.FilterOperator.GE, inicioFormatted));
+          }
+          
+          if (dataFim) {
+            const fimFormatted = formatDateForFilter(dataFim);
+            filters.push(new sap.ui.model.Filter("fim", sap.ui.model.FilterOperator.LE, fimFormatted));
+          }
+          
+          oTable.getBinding("items").filter(filters);
+          setTimeout(updateResultCount, 100);
+        }
+
+        // Função para formatar data para filtro (YYYY-MM)
+        function formatDateForFilter(date) {
+          if (!date) return null;
+          const year = date.getFullYear();
+          const month = String(date.getMonth() + 1).padStart(2, '0');
+          return `${year}-${month}`;
+        }
 
         const oGoButton = new sap.m.Button({
           text: "Go",
           type: "Emphasized",
+          press: function() {
+            applyAllFilters();
+          }
         });
 
-        const oAdaptButton = new sap.m.Button({
-          text: "Adapt Filters",
+        const oClearButton = new sap.m.Button({
+          text: "Limpar Filtros",
           type: "Transparent",
+          icon: "sap-icon://clear-filter",
+          press: function() {
+            oEmpresaField.setValue("");
+            oCargoField.setValue("");
+            oDataInicio.setValue("");
+            oDataFim.setValue("");
+            oTable.getBinding("items").filter([]);
+            updateResultCount();
+          }
         });
 
-        const oFilterBar = new sap.m.Toolbar({
-          content: [oEmpresaField, oDataInicio, oDataFim, oGoButton, oAdaptButton],
+        // Função para aplicar todos os filtros
+        function applyAllFilters() {
+          let filters = [];
+          
+          // Filtro por empresa
+          const empresaValue = oEmpresaField.getValue();
+          if (empresaValue) {
+            filters.push(new sap.ui.model.Filter("empresa", sap.ui.model.FilterOperator.Contains, empresaValue));
+          }
+          
+          // Filtro por cargo
+          const cargoValue = oCargoField.getValue();
+          if (cargoValue) {
+            filters.push(new sap.ui.model.Filter("cargo", sap.ui.model.FilterOperator.Contains, cargoValue));
+          }
+          
+          // Filtros de data
+          const dataInicio = oDataInicio.getDateValue();
+          const dataFim = oDataFim.getDateValue();
+          
+          if (dataInicio) {
+            const inicioFormatted = formatDateForFilter(dataInicio);
+            filters.push(new sap.ui.model.Filter("inicio", sap.ui.model.FilterOperator.GE, inicioFormatted));
+          }
+          
+          if (dataFim) {
+            const fimFormatted = formatDateForFilter(dataFim);
+            filters.push(new sap.ui.model.Filter("fim", sap.ui.model.FilterOperator.LE, fimFormatted));
+          }
+          
+          oTable.getBinding("items").filter(filters);
+          setTimeout(updateResultCount, 100);
+        }
+
+        // Container principal dos filtros
+        const oFilterContainer = new sap.m.HBox({
+          width: "100%",
+          wrap: "NoWrap",
+          justifyContent: "SpaceBetween",
+          alignItems: "End",
+          items: [
+            new sap.m.VBox({
+              items: [
+                new sap.m.Label({ text: "Empresa" }),
+                oEmpresaField
+              ]
+            }),
+            new sap.m.VBox({
+              items: [
+                new sap.m.Label({ text: "Cargo" }),
+                oCargoField
+              ]
+            }),
+            new sap.m.VBox({
+              items: [
+                new sap.m.Label({ text: "Data Início" }),
+                oDataInicio
+              ]
+            }),
+            new sap.m.VBox({
+              items: [
+                new sap.m.Label({ text: "Data Fim" }),
+                oDataFim
+              ]
+            }),
+            new sap.m.VBox({
+              items: [
+                new sap.m.Label({ text: "Ações" }),
+                new sap.m.HBox({
+                  items: [oGoButton, oClearButton]
+                })
+              ]
+            })
+          ]
         }).addStyleClass("filtroEspacado");
 
         // 🔹 Tabela de Projetos
         const oTable = new sap.m.Table({
-          headerText: "Lista de Experiências",
+          headerText: "Lista de Experiências Profissionais",
+          mode: "SingleSelectMaster",
+          growing: true,
+          growingThreshold: 10,
           columns: [
-            new sap.m.Column({ header: new sap.m.Label({ text: "Empresa" }) }),
-            new sap.m.Column({ header: new sap.m.Label({ text: "Cargo" }) }),
-            new sap.m.Column({ header: new sap.m.Label({ text: "Data Início" }) }),
-            new sap.m.Column({ header: new sap.m.Label({ text: "Data Fim" }) }),
+            new sap.m.Column({ 
+              header: new sap.m.Label({ text: "Empresa" }),
+              width: "20%"
+            }),
+            new sap.m.Column({ 
+              header: new sap.m.Label({ text: "Cargo" }),
+              width: "30%"
+            }),
+            new sap.m.Column({ 
+              header: new sap.m.Label({ text: "Data Início" }),
+              width: "15%"
+            }),
+            new sap.m.Column({ 
+              header: new sap.m.Label({ text: "Data Fim" }),
+              width: "15%"
+            }),
+            new sap.m.Column({ 
+              header: new sap.m.Label({ text: "Status" }),
+              width: "20%"
+            }),
           ],
           items: {
             path: "/Projetos",
@@ -185,14 +659,30 @@
               type: "Navigation",
               press: function (oEvent) {
                 const oContext = oEvent.getSource().getBindingContext();
-                oDetailPage.setBindingContext(oContext); // define o contexto da Object Page
+                oDetailPage.setBindingContext(oContext);
                 oApp.to(oDetailPage);
               },
               cells: [
-              new sap.m.Text({ text: "{empresa}" }),
-              new sap.m.Text({ text: "{cargo}" }),
-              new sap.m.Text({ text: "{inicio}" }),
-              new sap.m.Text({ text: "{fim}" }),
+                new sap.m.Text({ 
+                  text: "{empresa}",
+                  wrapping: true
+                }),
+                new sap.m.Text({ 
+                  text: "{cargo}",
+                  wrapping: true
+                }),
+                new sap.m.Text({ 
+                  text: "{inicio}",
+                  wrapping: true
+                }),
+                new sap.m.Text({ 
+                  text: "{fim}",
+                  wrapping: true
+                }),
+                new sap.m.ObjectStatus({
+                  text: "{fim}",
+                  state: "None"
+                })
             ],
             }),
           },
@@ -208,6 +698,7 @@
               new sap.m.IconTabFilter({
                 key: "resumo",
                 text: "Resumo",
+                icon: "sap-icon://person-placeholder",
                 content: [
                   new sap.m.VBox({
                     width: "95%",
@@ -216,14 +707,14 @@
                       new sap.m.Title({ text: "Sobre Mim", level: "H2" }),
                       new sap.m.FormattedText({
                         htmlText: `
-                          Desenvolvedor SAP ABAP Pleno com sólida experiência em projetos de implementação e suporte no ambiente SAP atuando principalmente com ABAP, Fiori e S/4HANA.<br>
-                          Com uma jornada iniciada em 2018, busco constantemente aprimorar meus conhecimentos.<br>
-                          Ao longo da carreira tive a oportunidade de obter a certificação 
-                          <a target="_blank" href="https://www.credly.com/badges/88eaaff6-28fe-4191-9845-1a4f87e7239d/linked_in_profile" style="color:#0a6ed1; text-decoration: none;">
+                          Desenvolvedor SAP ABAP Pleno com sólida experiência em projetos de implementação e suporte no ambiente SAP, atuando principalmente com ABAP, Fiori e S/4HANA.<br><br>
+                          Com uma jornada iniciada em 2018, busco constantemente aprimorar meus conhecimentos e contribuir com soluções inovadoras.<br><br>
+                          Ao longo da carreira, tive a oportunidade de obter a certificação 
+                          <a target="_blank" href="https://www.credly.com/badges/88eaaff6-28fe-4191-9845-1a4f87e7239d/linked_in_profile" style="color:#0a6ed1; text-decoration: none; font-weight: 600;">
                             SAP Fiori Application Developer
-                          </a>, reafirmando meu compromisso com o desenvolvimento de soluções inovadoras e eficientes no ecossistema SAP.<br>
-                          Contribuí tambem com o desenvolvimento de aplicações customizadas, participei de projetos de migração para S/4HANA e implementei integrações complexas, utilizando SAP CPI e micro-serviços.<br>
-                          
+                          </a>, reafirmando meu compromisso com o desenvolvimento de soluções eficientes no ecossistema SAP.<br><br>
+                          Contribuí também com o desenvolvimento de aplicações customizadas, participei de projetos de migração para S/4HANA e implementei integrações complexas utilizando SAP CPI e micro-serviços.<br><br>
+                          <strong>Especialidades:</strong> ABAP, SAP Fiori, S/4HANA, SAP CPI, CDS Views, RAP, SAP Gateway, Adobe Forms, SmartForms, Node.js, React, TypeScript.
                         `
                       }),
                     ],
@@ -233,25 +724,63 @@
                 new sap.m.IconTabFilter({
                   key: "experiencias",
                   text: "Experiências",
+                  icon: "sap-icon://work-history",
                   content: [
                     oTopBar,
-                    oFilterBar,
+                    oFilterContainer,
                     oTable,
                   ],
                 }),
                 new sap.m.IconTabFilter({
                 key: "certificados",
                 text: "Formação e Certificados",
+                icon: "sap-icon://education",
                 content: [
                   new sap.m.VBox({
                     width: "95%",
                     padding: "2rem",
                     items: [
                       new sap.m.Title({ text: "Formação Acadêmica", level: "H2" }),
-                      new sap.m.Text({ text: "IFBA – Análise e Desenvolvimento de Sistemas (trancado)" }),
-                      new sap.m.Text({ text: "SENAI – Técnico em Desenvolvimento de Sistemas (concluído - 2021)" }),
-                      new sap.m.Text({ text: "SAP Certified Development Associate - SAP Fiori Application Developer (Capgemini - 2022)" }),
-                      new sap.m.Text({ text: "SAP Academy 2021 (ABAP ECC, FIORI Fundamentals, SAP HANA, FIORI Advanced)" }),
+                      new sap.m.VBox({
+                        items: [
+                          new sap.m.ObjectListItem({
+                            title: "IFBA – Análise e Desenvolvimento de Sistemas",
+                            intro: "Bacharelado em Análise e Desenvolvimento de Sistemas",
+                            number: "Trancado",
+                            icon: "sap-icon://education",
+                            type: "Inactive"
+                          }),
+                          new sap.m.ObjectListItem({
+                            title: "SENAI – Técnico em Desenvolvimento de Sistemas",
+                            intro: "Curso Técnico Profissionalizante",
+                            number: "Concluído em 2021",
+                            icon: "sap-icon://education",
+                            type: "Active"
+                          })
+                        ]
+                      }),
+                      new sap.m.Title({ text: "Certificações SAP", level: "H2" }),
+                      new sap.m.VBox({
+                        items: [
+                          new sap.m.ObjectListItem({
+                            title: "SAP Certified Development Associate - SAP Fiori Application Developer",
+                            intro: "Certificação oficial SAP",
+                            number: "2022",
+                            icon: "sap-icon://badge",
+                            type: "Active",
+                            press: function() {
+                              window.open("https://www.credly.com/badges/88eaaff6-28fe-4191-9845-1a4f87e7239d/linked_in_profile", "_blank");
+                            }
+                          }),
+                          new sap.m.ObjectListItem({
+                            title: "SAP Academy 2021",
+                            intro: "ABAP ECC, Fiori Fundamentals, SAP HANA, Fiori Advanced",
+                            number: "2021",
+                            icon: "sap-icon://badge",
+                            type: "Active"
+                          })
+                        ]
+                      })
                     ],
                   }),
                 ],
@@ -259,20 +788,53 @@
               new sap.m.IconTabFilter({
                 key: "Contatos",
                 text: "Contatos",
+                icon: "sap-icon://address-book",
                 content: [
                   new sap.m.VBox({
                     width: "95%",
                     padding: "2rem",
                     items: [
-                      new sap.m.Title({ text: "Email:", level: "H2" }),
-                      new sap.m.Text({ text: "alvesiago639@gmail.com" }),
-                                            new sap.m.FormattedText({htmlText: `<br>`}),
-                      new sap.m.Title({ text: "Telefone:", level: "H2" }),
-                      new sap.m.Text({ text: "71 9 96289490" }),
-                                            new sap.m.FormattedText({htmlText: `<br>`}),
-                      new sap.m.Title({ text: "Linkedin:", level: "H2" }),
-                      new sap.m.Text({ text: "Iago333dev" }),
-                      new sap.m.FormattedText({htmlText: `<br>`}),
+                      new sap.m.Title({ text: "Informações de Contato", level: "H2" }),
+                      new sap.m.VBox({
+                        items: [
+                          new sap.m.ObjectListItem({
+                            title: "alvesiago639@gmail.com",
+                            intro: "Email profissional",
+                            icon: "sap-icon://email",
+                            type: "Active",
+                            press: function() {
+                              window.open("mailto:alvesiago639@gmail.com", "_self");
+                            }
+                          }),
+                          new sap.m.ObjectListItem({
+                            title: "(71) 9 9628-9490",
+                            intro: "Telefone/WhatsApp",
+                            icon: "sap-icon://phone",
+                            type: "Active",
+                            press: function() {
+                              window.open("https://wa.me/5571996289490", "_blank");
+                            }
+                          }),
+                          new sap.m.ObjectListItem({
+                            title: "Iago333dev",
+                            intro: "LinkedIn Profile",
+                            icon: "sap-icon://linkedin",
+                            type: "Active",
+                            press: function() {
+                              window.open("https://linkedin.com/in/iago333dev", "_blank");
+                            }
+                          }),
+                          new sap.m.ObjectListItem({
+                            title: "GitHub",
+                            intro: "Repositórios e projetos",
+                            icon: "sap-icon://source-code",
+                            type: "Active",
+                            press: function() {
+                              window.open("https://github.com/iago333dev", "_blank");
+                            }
+                          })
+                        ]
+                      })
                     ],
                   }),
                 ],
@@ -283,8 +845,6 @@
         });
 
         // 🔹 Página de Detalhes
-        const oDetailText = new sap.m.Text({ text: "" });
-
         const oDetailPage = new sap.m.Page({
           showHeader: false,
           content: [
@@ -296,7 +856,7 @@
                   type: "Transparent",
                   press: () => oApp.back(),
                 }),
-                new sap.m.Title({ text: "Detalhes do Projeto" }),
+                new sap.m.Title({ text: "Detalhes da Experiência" }),
               ],
             }),
 
@@ -307,9 +867,10 @@
                 new sap.m.IconTabFilter({
                   key: "general",
                   text: "Informações Gerais",
+                  icon: "sap-icon://detail-view",
                   content: [
                     new sap.m.VBox({
-                      width: "95%", // espaçamento horizontal
+                      width: "95%",
                       alignItems: "Start",
                       justifyContent: "Start",
                       items: [
@@ -317,12 +878,91 @@
                           title: "{empresa}",
                           number: "{inicio} até {fim}",
                           intro: "{cargo}",
+                          icon: "sap-icon://building",
+                          statuses: [
+                            new sap.m.ObjectStatus({
+                              text: "{= ${fim} === 'Atual' ? 'Ativo' : 'Concluído'}",
+                              state: "{= ${fim} === 'Atual' ? 'Success' : 'None'}"
+                            })
+                          ]
                         }),
-                        new sap.m.Text({ text: "{descricao}" }),
+                        new sap.m.Panel({
+                          headerText: "Descrição da Experiência",
+                          expandable: true,
+                          expanded: true,
+                          content: [
+                            new sap.m.Text({ 
+                              text: "{descricao}",
+                              wrapping: true
+                            })
+                          ]
+                        })
                       ],
                     }),
                   ],
                 }),
+                new sap.m.IconTabFilter({
+                  key: "skills",
+                  text: "Tecnologias",
+                  icon: "sap-icon://technical-object",
+                  content: [
+                    new sap.m.VBox({
+                      width: "95%",
+                      items: [
+                        new sap.m.Panel({
+                          headerText: "Tecnologias Utilizadas",
+                          content: [
+                            new sap.m.Text({
+                              text: "Baseado na descrição da experiência, as principais tecnologias envolvidas incluem:",
+                              wrapping: true
+                            }),
+                            new sap.m.FlexBox({
+                              wrap: "Wrap",
+                              items: [
+                                new sap.m.ObjectStatus({
+                                  text: "ABAP",
+                                  state: "Success"
+                                }),
+                                new sap.m.ObjectStatus({
+                                  text: "SAP Fiori",
+                                  state: "Success"
+                                }),
+                                new sap.m.ObjectStatus({
+                                  text: "S/4HANA",
+                                  state: "Success"
+                                }),
+                                new sap.m.ObjectStatus({
+                                  text: "CDS Views",
+                                  state: "Success"
+                                }),
+                                new sap.m.ObjectStatus({
+                                  text: "RAP",
+                                  state: "Success"
+                                }),
+                                new sap.m.ObjectStatus({
+                                  text: "SAP CPI",
+                                  state: "Success"
+                                }),
+                                new sap.m.ObjectStatus({
+                                  text: "Node.js",
+                                  state: "Success"
+                                }),
+                                new sap.m.ObjectStatus({
+                                  text: "React",
+                                  state: "Success"
+                                }),
+                                new sap.m.ObjectStatus({
+                                  text: "TypeScript",
+                                  state: "Success"
+                                })
+                              ]
+                            })
+                          ]
+                        })
+                      ]
+                    })
+                  ]
+                })
               ],
             }),
           ],
@@ -334,6 +974,83 @@
         });
 
         oApp.placeAt("content");
+        
+        // Processar status das experiências após o binding
+        setTimeout(() => {
+          const tableItems = oTable.getItems();
+          tableItems.forEach((item, index) => {
+            const cells = item.getCells();
+            if (cells && cells.length >= 5) {
+              const statusCell = cells[4]; // Coluna de status (5ª coluna)
+              const context = item.getBindingContext();
+              if (context) {
+                const data = context.getObject();
+                if (data.fim === 'Atual') {
+                  statusCell.setText('Ativo');
+                  statusCell.setState('Success');
+                } else {
+                  statusCell.setText('Concluído');
+                  statusCell.setState('None');
+                }
+              }
+            }
+          });
+        }, 500);
+        
+        // Adicionar animações de entrada
+        setTimeout(() => {
+          document.querySelectorAll('.sapUiBody > *').forEach((el, index) => {
+            el.style.animationDelay = `${index * 0.1}s`;
+            el.classList.add('fade-in');
+          });
+        }, 100);
+      });
+
+      // Função para alternar tema
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.getElementById('theme-icon');
+        const themeButton = document.querySelector('.theme-toggle');
+        
+        if (body.getAttribute('data-theme') === 'dark') {
+          body.removeAttribute('data-theme');
+          themeIcon.textContent = '🌙';
+          themeButton.innerHTML = '<span id="theme-icon">🌙</span> Modo Escuro';
+        } else {
+          body.setAttribute('data-theme', 'dark');
+          themeIcon.textContent = '☀️';
+          themeButton.innerHTML = '<span id="theme-icon">☀️</span> Modo Claro';
+        }
+      }
+
+      // Salvar preferência do tema
+      function saveThemePreference() {
+        const theme = document.body.getAttribute('data-theme');
+        localStorage.setItem('theme', theme || 'light');
+      }
+
+      // Carregar preferência do tema
+      function loadThemePreference() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+          document.body.setAttribute('data-theme', 'dark');
+          const themeIcon = document.getElementById('theme-icon');
+          const themeButton = document.querySelector('.theme-toggle');
+          if (themeIcon && themeButton) {
+            themeIcon.textContent = '☀️';
+            themeButton.innerHTML = '<span id="theme-icon">☀️</span> Modo Claro';
+          }
+        }
+      }
+
+      // Carregar tema ao inicializar
+      document.addEventListener('DOMContentLoaded', loadThemePreference);
+      
+      // Salvar tema ao alterar
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.theme-toggle')) {
+          setTimeout(saveThemePreference, 100);
+        }
       });
     </script>
   </body>
